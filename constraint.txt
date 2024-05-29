@@ -1,0 +1,39 @@
+create table emp
+(
+id number(10) primary key,
+name varchar2(30) not null,
+age number (10) check(age>30),
+salary number(20,3) check(salary>0)
+);
+
+insert into emp values(1,'jj',40,30000);
+insert into emp values(2,'cc',30,33000);
+
+select * from emp;
+
+create table emp2
+(
+id number(10) primary key,
+name varchar2(30) not null,
+email varchar2(30) unique,
+mobile varchar2(30) unique
+);
+
+insert into emp2 values(1,'ww','www',4567);
+insert into emp2 values(2,'bb','bbb',6547);
+
+select * from emp3;
+
+create table emp3
+(
+id number(10),
+name varchar2(30),
+salary number(20,3),
+constraint pk1 primary key(id)
+);
+
+insert into emp3 values(1,'nn',70000);
+insert into emp3 values(1,'mm',60000);
+insert into emp3 values(2,'mm',60000);
+
+select * from emp3;

@@ -1,0 +1,78 @@
+create table dept
+(
+id number(10) primary key,
+name varchar2(30),
+manager varchar2(30)
+);
+
+insert into dept values(1,'tester','tom');
+insert into dept values(2,'developer','john');
+insert into dept values(3,'HR','Tim');
+
+select * from dept;
+
+delete from dept where id=1;
+
+create table emp4
+(
+id number(10),
+name varchar2(20),
+age number(10),
+salary number(10),
+deptid number(10),
+constraint fk2 foreign key(deptid) references dept(id) on delete set null
+);
+
+insert into emp4 values(1,'tim',25,40000,2);
+insert into emp4 values(2,'dom',35,45000,1);
+insert into emp4 values(3,'hon',28,38000,1);
+insert into emp4 values(8,'abc',39,20000,1);
+
+update emp4 set deptid=3 where id=2;
+
+select * from emp4;
+select * from emp4 where id in (2,3,4);
+select * from emp4 where id > any (4,5);
+select * from emp4 where id >= all (1,2,3);
+
+drop table emp4;
+
+select * from emp4
+where salary > any (select salary from emp4 where age<=30);
+
+
+select * from emp4
+where salary > all (select salary from emp4 where deptid='1') and deptid !='1';
+
+select * from emp4
+inner join
+dept
+on emp4.deptid=dept.id;
+
+select * from emp4
+left outer join
+dept
+on emp4.deptid=dept.id;
+
+
+select * from emp4
+right outer join
+dept
+on emp4.deptid=dept.id;
+
+select * from emp4
+full outer join
+dept
+on emp4.deptid=dept.id;
+
+select e.id,e.name,e.deptid,d.id deptid,d.name
+from emp4 e
+left outer join
+dept d
+on e.deptid=d.id;
+
+select e.id,e.name,e.deptid,d.id deptid,d.name
+from emp4 e
+full outer join
+dept d
+on e.deptid=d.id;

@@ -1,0 +1,32 @@
+create table dept
+(
+id number(10) primary key,
+name varchar2(30),
+manager varchar2(30)
+);
+
+insert into dept values(1,'tester','tom');
+insert into dept values(2,'developer','john');
+
+select * from dept;
+
+delete from dept where id=1;
+
+create table emp4
+(
+id number(10),
+name varchar2(20),
+age number(10),
+salary number(10),
+deptid number(10),
+constraint fk2 foreign key(deptid) references dept(id) on delete set null
+);
+
+insert into emp4 values(1,'tim',25,40000,2);
+insert into emp4 values(2,'dom',35,45000,2);
+insert into emp4 values(3,'hon',28,38000,1);
+insert into emp4 values(5,'sam',32,50000,1);
+
+select * from emp4;
+
+drop table emp4;
