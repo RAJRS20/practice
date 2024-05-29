@@ -1,0 +1,32 @@
+select * from emp4;
+
+select id,name,salary, rank() over ( order by salary ) as giving_rank_by_salary
+from emp4;
+
+
+select id,name,salary,deptid, rank() over ( partition by deptid order by salary desc) as giving_rank_by_salary
+from emp4;
+
+select * from
+(
+select id,name,salary,deptid, rank() over ( order by salary desc) as giving_rank_by_salary
+from emp4
+)ep
+where giving_rank_by_salary=5;
+
+create sequence empid sequence 
+minvalue 1
+start with 1 
+increment by 1;
+
+create table employee11
+id number (10) primary key,
+name varchar2(30),
+age number (10) :
+dept varchar2(30)
+):
+
+insert into employeell values (empid sequence.nextval, 'sachin*, 30, 'hr');
+insert into employeell values (eupid sequence.nextva, 'ravi",32, 'developer') ;
+
+select * from employee11;

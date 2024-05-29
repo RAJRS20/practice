@@ -1,0 +1,27 @@
+create table brofc
+(
+id number(10),
+name varchar2(20),
+age number(10)
+);
+
+insert  into brofc values(4,'rrr',29);
+
+create table tnofc
+(
+id number(10),
+name varchar2(20),
+age number(10)
+);
+
+insert  into tnofc values(4,'rrr',29);
+
+select * from brofc
+union
+select * from tnofc;
+
+select * from brofc
+intersect 
+select * from tnofc;
+
+create sequence 

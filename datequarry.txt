@@ -1,0 +1,46 @@
+select trunc(100.2345,2) from dual;
+
+select round(100.80) from dual;
+
+select * from emp4;
+
+select id,name,salary, salary/30, round(salary/30,2) , round(salary/30) from emp4;
+
+select upper('tim') from dual;
+
+select id,name,upper(name) from emp4;
+
+select * from emp4 where length(name) =3;
+
+select id,name, replace(name,'m','e') from emp4;
+
+alter table emp4 add dob date;
+alter table emp4 add doj date;
+
+select * from emp4;
+
+update emp4 set dob='10-feb-1999',doj='2-jun-2024' where id=1;
+update emp4 set dob='10-feb-1980',doj='5-feb-2010' where id=2;
+update emp4 set dob='10-feb-1975',doj='20-jan-2005' where id=3;
+update emp4 set dob='10-feb-1975',doj='7-jun-1999' where id=4;
+update emp4 set dob='10-feb-1995',doj='12-aug-2020' where id=5;
+update emp4 set dob='10-feb-1983',doj='15-may-2013' where id=6;
+update emp4 set dob='10-feb-1998',doj='9-jun-2013' where id=7;
+update emp4 set dob='10-feb-2000',doj='24-sep-2022' where id=8;
+
+select id,name,doj, doj+2, doj+30 from emp4;
+
+select id,name,doj, doj-2, doj-1 from emp4;
+
+select id,name,dob, round((sysdate-dob)/365) as age from emp4;
+
+select id,name,dob, round((sysdate-dob)/365) as age from emp4 where round((sysdate-doj)/365) < 35;
+
+select id,name,doj, round(months_between(sysdate,doj)) from emp4;
+
+select id,name,doj, round((sysdate-doj)/30) from emp4;
+
+select next_day('29-may-2024','Wednesday') from dual;
+
+select last_day('1-feb-2002') from dual;
+

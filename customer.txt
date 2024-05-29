@@ -1,0 +1,46 @@
+create table customer
+(
+id number(10) primary key,
+name varchar2(20), 
+email_address varchar2(20),
+location varchar2(20)
+);
+
+insert into customer values(6, 'zz', 'zz@gmail.com', 'KL'); 
+
+create table p_order
+(
+order_id number(10) primary key,
+customer_id number(10),
+amount number(20),
+constraint po2 foreign key(customer_id) references customer(id) on delete set null
+);
+
+
+insert into p_order values(5,5,0); 
+
+select * from p_order;
+
+select * from p_order
+inner join
+customer
+on p_order.customer_id=customer.id;
+
+select o.order_id,o.customer_id,c.id customer_id,c.name,c.location
+from p_order o
+inner join
+customer c
+on o.customer_id=c.id
+where c.location='TN';
+
+select o.order_id,o.customer_id,o.amount,c.id customer_id,c.name,c.location
+from p_order o
+left outer join
+customer c
+on o.customer_id=c.id;
+
+select * from customer;
+
+select name, location
+from customer
+where location='TN';
